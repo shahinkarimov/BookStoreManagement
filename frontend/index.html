@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BookStore Management — Onion Architecture 3D Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <canvas id="scene"></canvas>
+
+  <!-- Üzən naviqasiya paneli -->
+  <nav class="navbar glass">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+      </svg>
+      <span class="brand-name">BOOKSTORE<span class="accent">.SYSTEM</span></span>
+    </div>
+    <div class="badges">
+      <span class="badge">.NET 8</span>
+      <span class="badge">EF Core</span>
+      <span class="badge">AutoMapper</span>
+      <span class="badge">FluentValidation</span>
+      <span class="badge badge-green">Onion Architecture</span>
+    </div>
+  </nav>
+
+  <!-- Sol panel: qatlar -->
+  <aside class="layers glass" aria-label="Arxitektura qatları">
+    <h2 class="panel-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle>
+      </svg>
+      ARXİTEKTURA QATLARI
+    </h2>
+    <button class="layer-card active" data-layer="0">
+      <span class="dot" style="--c:#22C55E"></span>
+      <div><strong>Domain</strong><small>Entity-lər, IRepository&lt;T&gt; — təmiz C#, sıfır asılılıq</small></div>
+    </button>
+    <button class="layer-card" data-layer="1">
+      <span class="dot" style="--c:#38BDF8"></span>
+      <div><strong>Application</strong><small>DTO, Servislər, AutoMapper, FluentValidation</small></div>
+    </button>
+    <button class="layer-card" data-layer="2">
+      <span class="dot" style="--c:#A78BFA"></span>
+      <div><strong>Infrastructure</strong><small>EF Core, Repository impl., Migrations</small></div>
+    </button>
+    <button class="layer-card" data-layer="3">
+      <span class="dot" style="--c:#FB7185"></span>
+      <div><strong>Presentation</strong><small>Spectre.Console menyulu interfeys</small></div>
+    </button>
+    <p class="hint">Asılılıqlar yalnız içəriyə axır ⟶ nüvəyə</p>
+  </aside>
+
+  <!-- Sağ panel: kitablar -->
+  <aside class="books glass" aria-label="Kitab kataloqu">
+    <h2 class="panel-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+      </svg>
+      KATALOQ (CANLI SEED)
+    </h2>
+    <ul id="bookList" class="book-list"></ul>
+  </aside>
+
+  <!-- Alt statistika -->
+  <footer class="stats glass" aria-label="Statistika">
+    <div class="stat"><span class="stat-value" data-count="7">0</span><span class="stat-label">Kitab</span></div>
+    <div class="stat"><span class="stat-value" data-count="5">0</span><span class="stat-label">Müəllif</span></div>
+    <div class="stat"><span class="stat-value" data-count="5">0</span><span class="stat-label">Janr</span></div>
+    <div class="stat"><span class="stat-value" data-count="2">0</span><span class="stat-label">Müştəri</span></div>
+    <div class="stat"><span class="stat-value" data-count="4">0</span><span class="stat-label">Qat</span></div>
+    <div class="stat stat-cta"><span class="stat-value"><span data-count="100">0</span>/100</span><span class="stat-label">Hədəf bal</span></div>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
